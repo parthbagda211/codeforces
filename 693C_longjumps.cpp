@@ -15,27 +15,28 @@ using namespace std;
 #define ss second
 #define pb push_back
 #define $  >>
+ll solve(){
+    ll n;cin>>n;
+    ll a[n];
+    ll ans[n] = {0};
+
+    FOR(i,0,n)  S a[i];
+
+    for(int i=n-1;i>=0;i--){
+        int in = i;
+        ans[i] = a[i];
+        in +=a[i];
+        if(in<n){
+            ans[i] +=ans[in];
+        }
+    }
+    cout << *max_element(ans,ans+n) << endl;
+}
 int main(){
 fastread();
-int n;cin>>n;
-vector<int> vt(n);
-int taxi=0;
-for(int i=0;i<n;i++){
-    cin>>vt[i];
+int t;cin>>t;
+while(t--){
+    solve();
 }
-sort(vt.begin(),vt.end());
-int i = vt.size()-1;
-int k =0;
-while(k!=i){
-    if(vt[i]+vt[k]<=4){
-        vt[i]+=vt[k];
-        k++;
-    }else{
-        i--;
-        taxi++;
-    }
-}
-cout << taxi+1 << endl;
-
 return 0;
 }

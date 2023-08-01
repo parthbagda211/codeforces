@@ -4,7 +4,7 @@ using namespace std;
 #define ll long long
 #define P  cout <<
 #define S  cin >>
-#define en  << endl
+
 #define FOR(i,a,b) for(int i=a;i<b;i++)
 #define all(x) x.begin(),x.end()
 #define pii pair<int,int>
@@ -17,25 +17,35 @@ using namespace std;
 #define $  >>
 int main(){
 fastread();
-int n;cin>>n;
-vector<int> vt(n);
-int taxi=0;
-for(int i=0;i<n;i++){
-    cin>>vt[i];
+int t;
+t=1;
+//cin>>t;
+while(t--){
+  ll n;cin>>n;
+  vll v(n+1);
+  unordered_map<ll,ll>mp;
+  
+  for(ll i=1;i<=n;i++){
+    cin>>v[i];
+  }
+  for(ll i=1;i<=n;i++){
+    mp[v[i]]=i;
+  }
+  ll m;cin>>m;
+  vll q(m+1);
+  for(ll i=1;i<=m;i++){
+    cin>>q[i];
+  }
+   ll st=0,en=0;
+  for(ll i=1;i<=m;i++){
+     st+=mp[q[i]];
+     en+= (n-mp[q[i]]+1);
+  }
+ 
+  
+  cout << st << " " << en << endl;
+
 }
-sort(vt.begin(),vt.end());
-int i = vt.size()-1;
-int k =0;
-while(k!=i){
-    if(vt[i]+vt[k]<=4){
-        vt[i]+=vt[k];
-        k++;
-    }else{
-        i--;
-        taxi++;
-    }
-}
-cout << taxi+1 << endl;
 
 return 0;
 }

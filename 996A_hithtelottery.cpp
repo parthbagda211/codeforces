@@ -18,24 +18,13 @@ using namespace std;
 int main(){
 fastread();
 int n;cin>>n;
-vector<int> vt(n);
-int taxi=0;
-for(int i=0;i<n;i++){
-    cin>>vt[i];
-}
-sort(vt.begin(),vt.end());
-int i = vt.size()-1;
-int k =0;
-while(k!=i){
-    if(vt[i]+vt[k]<=4){
-        vt[i]+=vt[k];
-        k++;
-    }else{
-        i--;
-        taxi++;
-    }
-}
-cout << taxi+1 << endl;
+int arr[] = {100,20,10,5,1};
+int cnt=0;
+for(int i=0;i<5;i++){
+    cnt+=n/arr[i];
+    n = n%arr[i];
 
+}
+cout << cnt << endl;
 return 0;
 }

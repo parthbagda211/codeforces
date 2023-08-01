@@ -15,27 +15,28 @@ using namespace std;
 #define ss second
 #define pb push_back
 #define $  >>
+int solve(int num){
+    int ans =0;
+    while(num){
+        ans += num%10;
+        num = num/10;
+    }
+    return ans;
+}
 int main(){
 fastread();
-int n;cin>>n;
-vector<int> vt(n);
-int taxi=0;
-for(int i=0;i<n;i++){
-    cin>>vt[i];
+int t;
+t=1;
+//cin>>t;
+while(t--){
+  int ans=0;
+  int n;cin>>n;
+  while(n){
+    ans++;
+   if(solve(ans)==10) n--;
+  }
+  cout << ans << endl;
 }
-sort(vt.begin(),vt.end());
-int i = vt.size()-1;
-int k =0;
-while(k!=i){
-    if(vt[i]+vt[k]<=4){
-        vt[i]+=vt[k];
-        k++;
-    }else{
-        i--;
-        taxi++;
-    }
-}
-cout << taxi+1 << endl;
 
 return 0;
 }

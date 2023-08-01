@@ -18,24 +18,43 @@ using namespace std;
 int main(){
 fastread();
 int n;cin>>n;
-vector<int> vt(n);
-int taxi=0;
+vll v(n);
+ll neg=0;
+ll sum=0;
+ll zero=0;
+ll k =0;
+ll pos=0;
 for(int i=0;i<n;i++){
-    cin>>vt[i];
+    cin>>v[i];
+    
+
 }
-sort(vt.begin(),vt.end());
-int i = vt.size()-1;
-int k =0;
-while(k!=i){
-    if(vt[i]+vt[k]<=4){
-        vt[i]+=vt[k];
-        k++;
-    }else{
-        i--;
-        taxi++;
+for(int i=0;i<n;i++) {
+    if(v[i]==-1 or v[i]==1)continue;
+    else if(v[i]<-1){
+        sum += abs(v[i]+1);
+        v[i] -= (v[i]+1);
+    }else if(v[i]>1){
+        sum += v[i]-1;
+        v[i]=1;
     }
 }
-cout << taxi+1 << endl;
+for(int i=0;i<n;i++){
+    if(v[i]==0){
+        zero++;
+        v[i]=1;
+    }
+    else if(v[i]==-1)neg++;
+    else if(v[i]==1)pos++;
+}
+sum+=zero;
+pos+=zero;
+if(neg%2==1){
+    if(zero>0) pos--;
+    else sum+=2;
+}
+
+cout << sum << endl;
 
 return 0;
 }

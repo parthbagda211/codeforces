@@ -17,25 +17,29 @@ using namespace std;
 #define $  >>
 int main(){
 fastread();
-int n;cin>>n;
-vector<int> vt(n);
-int taxi=0;
-for(int i=0;i<n;i++){
-    cin>>vt[i];
+int t;
+t=1;
+//cin>>t;
+while(t--){
+  ll n,m;cin>>n>>m;
+  vll v(n+1);
+  vll a(n+1);
+  set<ll>s;
+  for(ll i=1;i<=n;i++){
+    cin>>v[i];
+  }
+  for(ll i=n;i>0;i--){
+    s.insert(v[i]);
+    a[i]=s.size();
+
+  }
+  ll x;
+  for(ll i=1;i<=m;i++){
+    cin>>x;
+
+    cout << a[x] << endl;
+  }
 }
-sort(vt.begin(),vt.end());
-int i = vt.size()-1;
-int k =0;
-while(k!=i){
-    if(vt[i]+vt[k]<=4){
-        vt[i]+=vt[k];
-        k++;
-    }else{
-        i--;
-        taxi++;
-    }
-}
-cout << taxi+1 << endl;
 
 return 0;
 }

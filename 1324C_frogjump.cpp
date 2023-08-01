@@ -17,25 +17,23 @@ using namespace std;
 #define $  >>
 int main(){
 fastread();
-int n;cin>>n;
-vector<int> vt(n);
-int taxi=0;
-for(int i=0;i<n;i++){
-    cin>>vt[i];
-}
-sort(vt.begin(),vt.end());
-int i = vt.size()-1;
-int k =0;
-while(k!=i){
-    if(vt[i]+vt[k]<=4){
-        vt[i]+=vt[k];
-        k++;
-    }else{
-        i--;
-        taxi++;
+int t;cin>>t;
+while(t--){
+    string s;cin>>s;
+    int n = s.size();
+    vector<int>v;
+    int ans= INT_MIN;
+    v.push_back(0);
+    for(int i=0;i<n;i++){
+        if(s[i]=='R'){
+            v.push_back(i+1);
+        }
     }
+    v.push_back(n+1);
+    for(int i=0;i<v.size()-1;i++){
+    ans = max(ans,v[i+1]-v[i]);
+    }
+    cout << ans << endl;
 }
-cout << taxi+1 << endl;
-
 return 0;
 }
